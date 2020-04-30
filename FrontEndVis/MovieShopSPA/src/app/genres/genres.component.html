@@ -1,0 +1,12 @@
+<!--<p>genres works!</p>-->
+
+<ul class = "list-unstyled p-2">
+    <li *ngFor="let genre of genres">
+        <!-- we want to create anchor tag with angular router link-->
+
+        <a [routerLink] = "[ '/movies/genre/', genre.id ]"> {{genre.name}}</a>
+
+        <!--<a href="#">{{genre.name}}</a>
+        {{genre.name}}-->
+    </li>
+</ul>

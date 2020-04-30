@@ -1,0 +1,15 @@
+
+
+<!--<app-genres></app-genres>-->
+<div class = "container-fluid">
+    <div class = "row">
+
+        <div class="col-6 col-lg-3 col-sm-4 col-xl-2" *ngFor="let movie of movies">
+            {{movie.posterUrl}}
+            <app-movie-card [movie] = "movie">
+
+            </app-movie-card>
+        </div>
+        
+    </div>
+</div>

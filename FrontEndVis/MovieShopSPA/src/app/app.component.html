@@ -1,0 +1,16 @@
+<!--<h1>
+    {{title}}
+</h1>
+<app-genres></app-genres>
+-->
+<app-header></app-header>
+<!-- component that displays header with header component, thats gonna be there irrespective of routing 
+        when you go to localhost:4200/admin/createmovie you execute createMovie component
+        when you go to localhost:4200/genres/1 -- list of movies by genre ... MovieListComponent execute
+        where do you put all those route? in app routing module we specify all our routes-->
+<div class="container-fluid">
+    <router-outlet>
+        
+    </router-outlet>
+</div>
+        
