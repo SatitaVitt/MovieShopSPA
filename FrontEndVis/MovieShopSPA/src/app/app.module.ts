@@ -12,7 +12,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieCardComponent } from './shared/components/movie-card/movie-card.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 //import { GenresComponent } from './genres/genres.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,11 +28,15 @@ import { MovieCardComponent } from './shared/components/movie-card/movie-card.co
     GenresComponent,
     MoviesComponent,
     MovieCardComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [],

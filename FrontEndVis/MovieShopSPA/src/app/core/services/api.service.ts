@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Movie } from 'src/app/shared/models/movie';
 
 @Injectable({
@@ -33,7 +33,20 @@ export class ApiService {
       map(resp=> resp as any[])
     )
  }
-  getOne(path: string, id?: number): Observable<any>{
+  getOne(path: string, id?: number, queryParam?:Map<any,any>): Observable<any>{
+    let getUrl:string;
+    if(id){
+      getUrl = `${environment.apiUrl}${path}` + '/' + id;
+    }else{
+      getUrl = `${environment.apiUrl}${path}`;
+    }
+    let params = new HttpParams();
+    if(queryParam){
+      queryParam.forEach((value:string, key:string)=>{
+        params = params.append(key,value);
+      });
+    }
+    
     return this.http.get(`${environment.apiUrl}${path}${id}`).pipe(
       map(resp=> resp as any)
     )
@@ -42,6 +55,11 @@ export class ApiService {
     return this.http.get(`${environment.apiUrl}movie`).pipe(
       map(resp=> resp as any)
     )
+  }
+  create(path: string, resource: Object = {}, options?): Observable<any> {
+    return this.http.post(`${environment.apiUrl}${path}`, JSON.stringify(resource), options)
+      .pipe(map(response => response)
+      ,catchError(e=>throwError(new Error('Something bad happens'))));
   }
   /*
   getList(path: string): Observable<any[]>{

@@ -4,6 +4,8 @@ import { CreateMovieComponent } from './admin/create-movie/create-movie.componen
 import { HomeComponent } from './home/home.component';
 import { MovieCardListComponent } from './movies/movie-card-list/movie-card-list.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 const routes: Routes = [
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path: 'movies/:id', component:MovieDetailsComponent},
   {path: 'movies/genre/:id', component:MovieCardListComponent},
 
-  {path: 'admin/createmovie', component:CreateMovieComponent}
+  {path: 'admin/createmovie', component:CreateMovieComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({

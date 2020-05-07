@@ -1,4 +1,6 @@
 import { DecimalPipe } from '@angular/common';
+import { Cast } from './cast';
+import { Genre } from './genre';
 
 export interface Movie {
     id: number;
@@ -26,4 +28,6 @@ export interface Movie {
     purchases?: any;
 
     //movies: Movie;
+    casts: Cast[];
+    genres: Genre[];
 }
