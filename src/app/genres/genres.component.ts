@@ -12,7 +12,7 @@ export class GenresComponent implements OnInit {
   constructor(private genreService: GenreService) { }
 
   //Angular LifeCycle Hooks method
-  ngOnInit(){
+  ngOnInit() : void{
     //console.log('Component Initialized')
     this.genreService.getAllGenres().subscribe(
       g => {

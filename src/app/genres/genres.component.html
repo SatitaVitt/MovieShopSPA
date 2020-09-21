@@ -4,7 +4,7 @@
     <li *ngFor="let genre of genres">
         <!-- we want to create anchor tag with angular router link-->
 
-        <a [routerLink] = "[ '/movies/genre/', genre.id ]"> {{genre.name}}</a>
+        <a href = "#" [routerLink] = "[ '/movies/genre/', genre.id ]"> {{genre.name}}</a>
 
         <!--<a href="#">{{genre.name}}</a>
         {{genre.name}}-->

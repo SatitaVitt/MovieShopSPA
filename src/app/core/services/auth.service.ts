@@ -58,11 +58,22 @@ export class AuthService {
   }
   //method to get FirstName and LastName so that we show them in our Navigation 
 
+  isAdmin():boolean{
+    //check tokens whether it has admin role
+    this.decodeToken();
+    if(this.user.role.indexOf('admin')>-1){
+      return true;
+    }
+      
+    return false;
+  }
+
   getUserFullName() : string {
     if(this.decodeToken != null) {
       const decodedData = this.decodeToken();
       const UserFullName = decodedData.family_name + ' ' + decodedData.given_name;
       return UserFullName;
     }
+    return "";
   }
 }

@@ -21,6 +21,8 @@ export class MovieCardListComponent implements OnInit {
     this.activeRoute.paramMap.subscribe(
       params => {
         this.genreId = +params.get('id');
+        // call Movie Service that will call API Service that will call our Rest API
+  // to get the movies belong to the genre
         this.movieService.getMoviesByGenre(this.genreId).subscribe(
           m => {
             this.movies = m;

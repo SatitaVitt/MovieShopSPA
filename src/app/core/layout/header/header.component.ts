@@ -1,21 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,DoCheck {
 
-  //first call the isLoggedIn method from Auth Service and see if user is logged in 
-  //if he is logged in then hide login and register buttons and show his/her name by 
-  //calling getUserFulltName method in AuthService
-  //HW
-  //use ngIf in the HTML
-
-  constructor() { }
+  isLogged:boolean;
+  fullName : string;
+  constructor(public authService: AuthService,private router:Router) { }
+  
 
   ngOnInit(): void {
+  }
+
+  ngDoCheck():void{
+    if(this.authService.isLoggedIn()){
+      this.fullName = this.authService.getUserFullName();
+    }
+  }
+
+  login(){   
+    this.router.navigate(["login"]);
+  }
+  logout(){
+    this.authService.logout();
+    //console.log(this.authService.isLoggedIn());
   }
 
 }
